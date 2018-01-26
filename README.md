@@ -1,0 +1,2 @@
+# DTCoreTextDemo
+DTCoreText是可以将HTML字符串转为为富文本使用的工具，本例提供其基本用法，演示作为Label、ScrollView、Cell的三种用法。
