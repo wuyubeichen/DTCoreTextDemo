@@ -1,0 +1,102 @@
+{
+    "subtype" : "movie",
+    "mobile_url" : "http:\/\/movie.douban.com\/subject\/3005875\/mobile",
+    "title" : "2012",
+    "summary" : "太阳活动异常，地球内部的能量平衡系统面临崩溃，玛雅人的预言即将实现，人类将遭遇灭顶之灾。各国政府已经联手开始秘密制造方舟，希望能躲过这一浩劫。以写科幻小说谋生的杰克逊（约翰·库萨克 John Cusack 饰）在带孩子们到黄石公园渡周末时发生一连串怪事，而且遇到了神经兮兮的查理（伍迪·哈里森 Woody Harrelson 饰)，查理告诉他世界末日即将来临。伴随着火山爆发，强烈地震以及海啸，杰克逊带领自己的家人驾驶一架临时租来的飞机冲出被死神阴霾瞬间笼罩的城市上空，开始寻找查理口中各国政府正在联合秘密制造的方舟。在生死攸关的时刻，一些伟大的鬼魂将脱颖而出，而一些自私的心灵将无所遁形，当千千万万个生灵通过各种方法来到方舟制造基地之时，方舟有限的容纳数量引发前所未有的恐慌。最终，仅存的人们用互爱和对生命的尊重渡过了难关。\n本片被称为《后天》的升级版，投资超过2亿美元，是灾难片大师罗兰·艾默里奇（Roland Emmerich）的最新力作。©豆瓣",
+    "alt" : "http:\/\/movie.douban.com\/subject\/3005875\/",
+    "directors" : [
+                   {
+                   "id" : "1040593",
+                   "alt" : "http:\/\/movie.douban.com\/celebrity\/1040593\/",
+                   "avatars" : {
+                   "small" : "http:\/\/img3.douban.com\/img\/celebrity\/small\/412.jpg",
+                   "large" : "http:\/\/img3.douban.com\/img\/celebrity\/large\/412.jpg",
+                   "medium" : "http:\/\/img3.douban.com\/img\/celebrity\/medium\/412.jpg"
+                   },
+                   "name" : "罗兰·艾默里奇"
+                   }
+                   ],
+    "collect_count" : 279316,
+    "images" : {
+        "small" : "http:\/\/img3.douban.com\/spic\/s3964805.jpg",
+        "large" : "http:\/\/img3.douban.com\/lpic\/s3964805.jpg",
+        "medium" : "http:\/\/img3.douban.com\/mpic\/s3964805.jpg"
+    },
+    "countries" : [
+                   "美国",
+                   "加拿大"
+                   ],
+    "wish_count" : 19818,
+    "do_count" : null,
+    "original_title" : "2012",
+    "year" : "2009",
+    "comments_count" : 55687,
+    "schedule_url" : "",
+    "seasons_count" : null,
+    "id" : "3005875",
+    "aka" : [
+             "2012末日预言(港)",
+             "2012世界末日",
+             "2012地球毁灭",
+             "Farewell Atlantis",
+             "2012 3D"
+             ],
+    "reviews_count" : 2467,
+    "casts" : [
+               {
+               "id" : "1018986",
+               "alt" : "http:\/\/movie.douban.com\/celebrity\/1018986\/",
+               "avatars" : {
+               "small" : "http:\/\/img3.douban.com\/img\/celebrity\/small\/5486.jpg",
+               "large" : "http:\/\/img3.douban.com\/img\/celebrity\/large\/5486.jpg",
+               "medium" : "http:\/\/img3.douban.com\/img\/celebrity\/medium\/5486.jpg"
+               },
+               "name" : "约翰·库萨克"
+               },
+               {
+               "id" : "1010581",
+               "alt" : "http:\/\/movie.douban.com\/celebrity\/1010581\/",
+               "avatars" : {
+               "small" : "http:\/\/img3.douban.com\/img\/celebrity\/small\/9322.jpg",
+               "large" : "http:\/\/img3.douban.com\/img\/celebrity\/large\/9322.jpg",
+               "medium" : "http:\/\/img3.douban.com\/img\/celebrity\/medium\/9322.jpg"
+               },
+               "name" : "切瓦特·埃加福特"
+               },
+               {
+               "id" : "1013775",
+               "alt" : "http:\/\/movie.douban.com\/celebrity\/1013775\/",
+               "avatars" : {
+               "small" : "http:\/\/img3.douban.com\/img\/celebrity\/small\/27792.jpg",
+               "large" : "http:\/\/img3.douban.com\/img\/celebrity\/large\/27792.jpg",
+               "medium" : "http:\/\/img3.douban.com\/img\/celebrity\/medium\/27792.jpg"
+               },
+               "name" : "阿曼达·皮特"
+               },
+               {
+               "id" : "1040513",
+               "alt" : "http:\/\/movie.douban.com\/celebrity\/1040513\/",
+               "avatars" : {
+               "small" : "http:\/\/img3.douban.com\/img\/celebrity\/small\/407.jpg",
+               "large" : "http:\/\/img3.douban.com\/img\/celebrity\/large\/407.jpg",
+               "medium" : "http:\/\/img3.douban.com\/img\/celebrity\/medium\/407.jpg"
+               },
+               "name" : "坦迪·牛顿"
+               }
+               ],
+    "douban_site" : "",
+    "genres" : [
+                "动作",
+                "科幻",
+                "惊悚"
+                ],
+    "current_season" : null,
+    "ratings_count" : 213908,
+    "rating" : {
+        "stars" : "40",
+        "average" : 7.7,
+        "min" : 0,
+        "max" : 10
+    },
+    "episodes_count" : null
+}

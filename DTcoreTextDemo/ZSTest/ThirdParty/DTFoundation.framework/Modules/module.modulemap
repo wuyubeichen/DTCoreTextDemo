@@ -1,0 +1,6 @@
+framework module DTFoundation {
+  umbrella header "DTFoundation.h"
+
+  export *
+  module * { export * }
+}
