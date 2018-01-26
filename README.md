@@ -7,8 +7,7 @@ DTCoreText这个工具很强大，但是相关的资料和博客却很少，所�
 2.关于html标签的超链接，如果需要响应处理，我们需要自定义Button等控件，这个也是在代理方法中处理的。
 
 效果图：
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo1.jpeg)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo2.jpeg)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo3.jpeg)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo4.jpeg)
-
+![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo1.png)
+![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo2.png)
+![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo3.png)
+![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemo4.png)
