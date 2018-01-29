@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## DTCoreTextDemo
 DTCoreText是可以将HTML字符串转为为富文本使用的工具，本例提供其基本用法，演示作为Label、ScrollView、Cell的三种用法。
 
@@ -6,8 +7,8 @@ DTCoreText是可以将HTML字符串转为为富文本使用的工具，本例提
 ### 2.关于html标签的超链接，如果需要响应处理，我们需要自定义Button等控件，这个也是在代理方法中处理的。
 
 ## 效果图：
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg1.png)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg2.png)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg3.png)
-![image](https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg4.png)
+<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg1.png" width="375" height="667">
+<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg2.png" width="375" height="667">
+<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg3.png" width="375" height="667">
+<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg4.png" width="375" height="667">
 
