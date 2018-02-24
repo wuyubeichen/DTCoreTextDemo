@@ -17,8 +17,11 @@
 
 //类似tabelView的缓冲池，用于存放图片大小
 @property (nonatomic, strong) NSCache *imageSizeCache;
+@property (nonatomic,strong)NSCache *cellCache;
+
 //表视图数据源
 @property (nonatomic, strong) NSArray  *dataSource;
+@property (nonatomic,assign)BOOL isScrolling;
 @end
 
 @implementation TestTableViewController
@@ -27,14 +30,31 @@
     [super viewDidLoad];
     self.title = @"测试DTAttributedTextCell";
     self.cellID_Normal = @"UITableViewCellID";
-    //self.cellID_DTCoreText = @"DTCoreTextTableViewCellID";
+    self.cellID_DTCoreText = @"DTCoreTextTableViewCellID";
     self.view.backgroundColor = [UIColor orangeColor];
     self.navigationController.navigationBar.translucent = NO;
     
     _imageSizeCache = [[NSCache alloc] init];
+    _cellCache = [[NSCache alloc] init];
+    _cellCache.totalCostLimit = 10;
+    _cellCache.countLimit = 10;
+
     //添加表视图
     [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [UIView new];
+    
+    //测试一个bug,执行表视图更新的时候回内存激增
+    UIButton *testBtn = [[UIButton alloc] initWithFrame:CGRectMake( 50, 20, 300, 50)];
+    [testBtn addTarget:self action:@selector(testBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [testBtn setTitle:@"测试表视图刷新" forState:UIControlStateNormal];
+    testBtn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:testBtn];
+}
+
+
+- (void)testBtnClick:(UIButton *)btn{
+    NSLog(@"点击刷新表视图。。。。。。");
+    [self.tableView reloadData];
 }
 
 - (void)dealloc{
@@ -47,11 +67,11 @@
 #pragma mark - UITableViewDelegate
 //返回组数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return self.dataSource.count;
 }
 //返回行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return [self.dataSource[section] count];
 }
 //返回单元格
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -140,7 +160,9 @@
     }
 
     if (needUpdate){
-        [self.tableView  reloadData];
+        //[self.tableView  reloadData];
+        //有新的图片尺寸被缓存记录的时候，需要刷新表视图
+        [self reloadCurrentCell];
     }
 }
 
@@ -148,18 +170,21 @@
 //创建富文本单元格，并更新单元格上的数据
 - (ZSDTCoreTextCell *)tableView:(UITableView *)tableView prepareCellForIndexPath:(NSIndexPath *)indexPath{
     NSString *key = [NSString stringWithFormat:@"dtCoreTextCellKEY%ld-%ld", (long)indexPath.section, (long)indexPath.row];
-    ZSDTCoreTextCell *cell = [tableView dequeueReusableCellWithIdentifier:key];
+    ZSDTCoreTextCell *cell = [_cellCache objectForKey:key];
 
     if (!cell){
-        //cell = [tableView dequeueReusableCellWithIdentifier:key];
-        cell = [[ZSDTCoreTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:key];
+//    cell = [self.tableView dequeueReusableCellWithIdentifier:_cellID_DTCoreText];
+//        if (!cell) {
+            cell = [[ZSDTCoreTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_cellID_DTCoreText];
+//        }
+        cell.attributedTextContextView.edgeInsets = UIEdgeInsetsMake(0, 15, 0, 15);
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.hasFixedRowHeight = NO;
         cell.textDelegate = self;
         cell.attributedTextContextView.shouldDrawImages = YES;
         //记录在缓存中
-        //[_cellCache setObject:cell forKey:key];
+        [_cellCache setObject:cell forKey:key];
     }
     //2.设置数据
     //2.1为富文本单元格设置Html数据
@@ -170,6 +195,7 @@
         if (sizeValue) {
             cell.attributedTextContextView.layouter=nil;
             oneAttachment.displaySize = [sizeValue CGSizeValue];
+            [cell.attributedTextContextView relayoutText];
         }
     }
     [cell.attributedTextContextView relayoutText];
@@ -177,7 +203,27 @@
 }
 
 
+- (void)reloadCurrentCell{
+    //如果当前表视图在滑动就不执行刷新，因为滑动时候会自动调用表视图的刷新方法
+    if (self.isScrolling) {
+        return;
+    }
+    //如果当前表视图没有在滑动，就手动刷新当前在屏幕显示的单元格
+    NSArray *indexPaths = [self.tableView indexPathsForVisibleRows];
+    if(indexPaths){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+        });
+    }
+}
 
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    _isScrolling = NO;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    _isScrolling = YES;
+}
 
 
 #pragma mark - set/get方法
@@ -196,11 +242,27 @@
     if(_dataSource == nil){
         NSMutableArray *noramDataArray = @[].mutableCopy;
         NSMutableArray *htmlDataArray = @[].mutableCopy;
-
-        for(int i = 0;i<5;i++){
-            [noramDataArray addObject:[NSString stringWithFormat:@"测试普通单元格:%d",i]];
-            //这里提供的Html图片链接，没有宽高属性，代码中已经演示了如何处理
+        NSArray *images = @[@"https://i0.hdslb.com/bfs/archive/d5ad3cf95d32f3d2f2e3471a39120237200d84d8.jpg",
+                           @"https://i0.hdslb.com/bfs/archive/71d2fed927d9351e759f408ca7d66c556c37a6b4.jpg",
+                           @"https://i0.hdslb.com/bfs/archive/7f520b31b67cd5d89dd30b61b40711327bb00288.png",
+                           @"https://i0.hdslb.com/bfs/archive/6edbe81bf74c106087ad139aca169d6e8d9d963b.jpg",
+                           @"https://i0.hdslb.com/bfs/archive/805aa8f7ae722fcc277f425bb9927e29ec1d2468.jpg",
+                           @"https://i0.hdslb.com/bfs/archive/a7c61d94c583363a970d2a2e339eea97f8f32317.jpg",
+                           @"https://i0.hdslb.com/bfs/archive/b447ee1fd63b4cf6f4465a5621cc12898867d26b.jpg"];
+        
+        
+        for(int i = 0;i<1000;i++){
+            if(i <6){
+                [noramDataArray addObject:[NSString stringWithFormat:@"测试普通单元格:%d",i]];
+            }
+            /*
             NSString *htmlString =[NSString stringWithFormat:@"<span style=\"color:#333;font-size:15px;\"><strong>收费标准%d：</strong></span><br/><span style=\"color:#333;font-size:15px;\">记住！砍价是由你自己先砍，砍不动时再由砍价师继续砍；由砍价师多砍下的部分，才按照下列标准收费：</span><br/><span style=\"color:#333;font-size:15px;\"><img src=\"http://cn-qinqimaifang-uat.oss-cn-hangzhou.aliyuncs.com/img/specialist/upload/spcetiicwlz1v_54e2e00fa8a6faf66168571654dbfee2.jpg\" _src=\"http://cn-qinqimaifang-uat.oss-cn-hangzhou.aliyuncs.com/img/specialist/upload/spcetiicwlz1v_54e2e00fa8a6faf66168571654dbfee2.jpg\"></span>",i];
+             */
+            
+            //这里提供的Html图片链接，没有宽高属性，代码中已经演示了如何处理
+            int k = i % 6;
+            NSString *htmlString =[NSString stringWithFormat:@"<span style=\"color:#333;font-size:15px;\"><strong>测试富文本单元格%d：</strong></span><br/><span style=\"color:#333;font-size:15px;\">记住！砍价是由你自己先砍，砍不动时再由砍价师继续砍；由砍价师多砍下的部分，才按照下列标准收费：</span><br/><span style=\"color:#333;font-size:15px;\"><img src=%@ _src=%@></span>",i,images[k],images[k]];
+
             [htmlDataArray addObject:htmlString];
         }
         _dataSource = @[noramDataArray,htmlDataArray];

@@ -211,7 +211,6 @@
 			children = (
 				E952AD1E1F95BC4900D8B3BF /* AppDelegate */,
 				E9335CDF1C8FCF0400B4F3D3 /* TestFiles */,
-				E96CD6A31D8E547C0051BC19 /* CustomTools */,
 				E96CD6A41D8E547C0051BC19 /* ThirdParty */,
 				E9335CD81C8FCE9800B4F3D3 /* BaseFiles */,
 				E9335CD31C8FCE2F00B4F3D3 /* Resource */,
@@ -254,9 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				E952AD281F95BE3000D8B3BF /* image.xcassets */,
-				E952AD261F95BE1A00D8B3BF /* Audios */,
 				E952AD271F95BE1A00D8B3BF /* Jsons */,
-				E952AD251F95BE1900D8B3BF /* Pictures */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -298,33 +295,12 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		E952AD251F95BE1900D8B3BF /* Pictures */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pictures;
-			sourceTree = "<group>";
-		};
-		E952AD261F95BE1A00D8B3BF /* Audios */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Audios;
-			sourceTree = "<group>";
-		};
 		E952AD271F95BE1A00D8B3BF /* Jsons */ = {
 			isa = PBXGroup;
 			children = (
 				E952AD2A1F95BEB800D8B3BF /* TestData.json */,
 			);
 			path = Jsons;
-			sourceTree = "<group>";
-		};
-		E96CD6A31D8E547C0051BC19 /* CustomTools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomTools;
 			sourceTree = "<group>";
 		};
 		E96CD6A41D8E547C0051BC19 /* ThirdParty */ = {
