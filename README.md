@@ -11,5 +11,5 @@ DTCoreText这个工具很强大，但是相关的资料和博客却很少，所�
 <img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg1.png" width="375" height="667">
 <img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg2.png" width="375" height="667">
 <img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg3.png" width="375" height="667">
-<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg4.png" width="375" height="667">
+<img src="https://github.com/DreamcoffeeZS/DTCoreTextDemo/blob/master/Screenshots/DTcoreTextDemoImg5.png" width="375" height="667">
 
