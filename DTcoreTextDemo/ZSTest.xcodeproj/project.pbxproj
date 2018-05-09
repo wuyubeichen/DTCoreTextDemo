@@ -691,7 +691,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZSTest/ZSTest.pch";
 				INFOPLIST_FILE = ZSTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shuai.ZSProject-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuai.ZSProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -708,7 +708,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZSTest/ZSTest.pch";
 				INFOPLIST_FILE = ZSTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shuai.ZSProject-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuai.ZSProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

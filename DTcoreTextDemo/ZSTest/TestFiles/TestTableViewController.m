@@ -160,9 +160,11 @@
     }
 
     if (needUpdate){
-        //[self.tableView  reloadData];
         //有新的图片尺寸被缓存记录的时候，需要刷新表视图
-        [self reloadCurrentCell];
+        //[self reloadCurrentCell];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(reloadCurrentCell) object:nil];
+        self.isScrolling = NO;
+        [self performSelector:@selector(reloadCurrentCell) withObject:nil afterDelay:0.2];
     }
 }
 
@@ -217,9 +219,18 @@
     }
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    _isScrolling = NO;
-}
+////显示动画，表视图停止滑动之后调用；没有动画此方法不调用
+//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+//    _isScrolling = NO;
+////   [self reloadCurrentCell];
+//}
+//
+////手指拖动表视图，表视图停止滑动之后调用
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+//    _isScrolling = NO;
+////    [self reloadCurrentCell];
+//}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     _isScrolling = YES;
@@ -252,12 +263,10 @@
         
         
         for(int i = 0;i<1000;i++){
-            if(i <6){
+            if(i <3){
                 [noramDataArray addObject:[NSString stringWithFormat:@"测试普通单元格:%d",i]];
             }
-            /*
-            NSString *htmlString =[NSString stringWithFormat:@"<span style=\"color:#333;font-size:15px;\"><strong>收费标准%d：</strong></span><br/><span style=\"color:#333;font-size:15px;\">记住！砍价是由你自己先砍，砍不动时再由砍价师继续砍；由砍价师多砍下的部分，才按照下列标准收费：</span><br/><span style=\"color:#333;font-size:15px;\"><img src=\"http://cn-qinqimaifang-uat.oss-cn-hangzhou.aliyuncs.com/img/specialist/upload/spcetiicwlz1v_54e2e00fa8a6faf66168571654dbfee2.jpg\" _src=\"http://cn-qinqimaifang-uat.oss-cn-hangzhou.aliyuncs.com/img/specialist/upload/spcetiicwlz1v_54e2e00fa8a6faf66168571654dbfee2.jpg\"></span>",i];
-             */
+        
             
             //这里提供的Html图片链接，没有宽高属性，代码中已经演示了如何处理
             int k = i % 6;
